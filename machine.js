@@ -3,7 +3,7 @@ require('dotenv').config();
 
 var io = require('socket.io-client');
 
-const socket = io(process.env.HOST+'?client_type=machine');
+const socket = io(process.env.LOCAL_HOST+'?client_type=machine');
 
 
 socket.on('connect', () =>
