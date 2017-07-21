@@ -1,0 +1,19 @@
+<html>
+
+<head></head>
+
+<body>
+    <button id="btnOn">On</button>
+    <button id="btnOff">Off</button>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io();
+        socket.on('connect', () => console.log('connected to host'));
+
+        document.querySelector('#btnOn').addEventListener('click', () => socket.emit('machine.command.led1.on'));
+        document.querySelector('#btnOff').addEventListener('click', () => socket.emit('machine.command.led1.off'));
+    </script>
+</body>
+
+</html>
