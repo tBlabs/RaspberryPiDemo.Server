@@ -1,0 +1,16 @@
+- Human (client)
+    - Sends commands via socket
+- Server
+    - Serves client.html to human via browser
+    - Keeps connection with machine
+- Machine (client)
+
+
+
+H->M: H->S->M
+M->H: M->S->H
+
+
+
+S:
+    on('H2M', d) emit('S2M', d)

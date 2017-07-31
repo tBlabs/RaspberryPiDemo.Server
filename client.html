@@ -1,18 +1,28 @@
 <html>
 
-<head></head>
+<head>
+    <style>
+        button { font-size: 18px; background: blue; color: white; padding: 18px 32px; border: 3px solid blue; border-radius: 3px; }
+    </style>
+</head>
 
 <body>
-    <button id="btnOn">On</button>
-    <button id="btnOff">Off</button>
+    <button id="btn_Led1On">LED 1 On</button>
+    <button id="btn_Led2Off">LED 1 Off</button>
+    <hr>
+    <button id="btn_RadioOn">Radio On</button>
+    <button id="btn_RadioOff">Radio Off</button>
 
     <script src="/socket.io/socket.io.js"></script>
     <script>
         var socket = io();
-        socket.on('connect', () => console.log('connected to host'));
+        socket.on('connect', () => console.log('Connected to server'));
+        socket.on('disconnect', () => console.log('Disconnected from server'));
 
-        document.querySelector('#btnOn').addEventListener('click', () => socket.emit('machine.command.led1.on'));
-        document.querySelector('#btnOff').addEventListener('click', () => socket.emit('machine.command.led1.off'));
+        document.querySelector('#btn_Led1On').addEventListener('click', () => socket.emit('human-to-machine', 'led1on'));
+        document.querySelector('#btn_Led1Off').addEventListener('click', () => socket.emit('human-to-machine', 'led1off'));
+        document.querySelector('#btn_RadioOn').addEventListener('click', () => socket.emit('human-to-machine', 'radio1on'));
+        document.querySelector('#btn_RadioOff').addEventListener('click', () => socket.emit('human-to-machine', 'radio1off'));
     </script>
 </body>
 

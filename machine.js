@@ -1,38 +1,53 @@
 require('dotenv').config();
 
+const { exec } = require('child_process');
+exec('mpc play', (error, stdout, stderr) =>
+{
+    if (error)
+    {
+        console.error(`exec error: ${ error }`);
+        return;
+    }
+    console.log(`stdout: ${ stdout }`);
+    console.log(`stderr: ${ stderr }`);
+});
 
 var io = require('socket.io-client');
 
-const socket = io(process.env.LOCAL_HOST+'?client_type=machine');
-
+const socket = io(process.env.SERVER_ADDR+'?client_type=machine');
 
 socket.on('connect', () =>
 {
-    console.log('connected to host');
+    console.log('Connected to server');
 
-    socket.on('machine.command.led1.on', ()=>
+    socket.on('server-to-machine', (cmd) =>
     {
-        console.log('led 1 on');
+        switch (cmd)
+        {
+            case 'led1on': console.log('Led 1 on'); break;
+            case 'led1off': console.log('Led 1 off'); break;
+        }
     });
-    socket.on('machine.command.led1.off', ()=>
-    {
-        console.log('led 1 off');
-    });
+});
+
+socket.on('disconnect', ()=>
+{
+    console.log('Disconnected from server');
 });
 
 // var Gpio = require('onoff').Gpio;
 // var led = new Gpio(17, 'out');
 // var button = new Gpio(4, 'in', 'both');
 
-let value = 0;
+// let value = 0;
 
-setInterval(() =>
-{
-    socket.emit('is_alive');
+// setInterval(() =>
+// {
+//     socket.emit('is_alive');
 
-    // value = 1 - value;
-    // led.writeSync(value);
-}, 1000);
+//     // value = 1 - value;
+//     // led.writeSync(value);
+// }, 1000);
 
 // process.on('SIGINT', function ()
 // {
