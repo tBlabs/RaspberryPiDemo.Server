@@ -35,6 +35,6 @@ io.on('connection', function (socket)
 
 http.listen(process.env.PORT, function ()
 {
-    console.log('Server started at ' + process.env.SERVER_ADDR);
+    console.log('Server started at port ' + process.env.PORT);
 });
 

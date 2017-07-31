@@ -1,5 +1,5 @@
 {
-  "name": "raspberrypidemohost",
+  "name": "raspberrypidemo",
   "version": "1.0.0",
   "description": "",
   "engines": {
@@ -13,8 +13,7 @@
     "runmachine": "node machine/machine.js"
   },
   "keywords": [
-    "raspberry",
-    "pi"
+    "raspberry pi"
   ],
   "author": "tB",
   "license": "ISC",
