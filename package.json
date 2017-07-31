@@ -8,9 +8,7 @@
   },
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "runserver": "node server.js",
-    "runmachine": "node machine/machine.js"
+    "start": "node server.js"
   },
   "keywords": [
     "raspberry pi"

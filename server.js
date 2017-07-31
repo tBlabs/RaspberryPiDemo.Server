@@ -19,6 +19,11 @@ io.on('connection', function (socket)
         console.log("Machine connected");
 
         machineSocket = socket;
+
+        socket.on('disconnect', ()=>
+        {
+            machineSocket = null;
+        });
     }
     else
     {
@@ -28,7 +33,10 @@ io.on('connection', function (socket)
         {
             console.log('Message from Human to Machine:', cmd);
 
-            machineSocket.emit('server-to-machine', cmd);
+            if (machineSocket)
+            {
+                machineSocket.emit('server-to-machine', cmd);
+            }
         });
     }
 });
