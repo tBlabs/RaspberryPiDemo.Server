@@ -8,7 +8,7 @@
 
 <body>
     <button id="btn_Led1On">LED 1 On</button>
-    <button id="btn_Led2Off">LED 1 Off</button>
+    <button id="btn_Led1Off">LED 1 Off</button>
     <hr>
     <button id="btn_RadioOn">Radio On</button>
     <button id="btn_RadioOff">Radio Off</button>
@@ -21,8 +21,8 @@
 
         document.querySelector('#btn_Led1On').addEventListener('click', () => socket.emit('human-to-machine', 'led1on'));
         document.querySelector('#btn_Led1Off').addEventListener('click', () => socket.emit('human-to-machine', 'led1off'));
-        document.querySelector('#btn_RadioOn').addEventListener('click', () => socket.emit('human-to-machine', 'radio1on'));
-        document.querySelector('#btn_RadioOff').addEventListener('click', () => socket.emit('human-to-machine', 'radio1off'));
+        document.querySelector('#btn_RadioOn').addEventListener('click', () => socket.emit('human-to-machine', 'radioon'));
+        document.querySelector('#btn_RadioOff').addEventListener('click', () => socket.emit('human-to-machine', 'radiooff'));
     </script>
 </body>
 

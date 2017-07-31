@@ -1,20 +1,10 @@
 require('dotenv').config();
 
-const { exec } = require('child_process');
-exec('mpc play', (error, stdout, stderr) =>
-{
-    if (error)
-    {
-        console.error(`exec error: ${ error }`);
-        return;
-    }
-    console.log(`stdout: ${ stdout }`);
-    console.log(`stderr: ${ stderr }`);
-});
-
 var io = require('socket.io-client');
+var exe = require('./exec').Exec;
 
-const socket = io(process.env.SERVER_ADDR+'?client_type=machine');
+
+const socket = io(process.env.SERVER_ADDR + '?client_type=machine');
 
 socket.on('connect', () =>
 {
@@ -26,11 +16,21 @@ socket.on('connect', () =>
         {
             case 'led1on': console.log('Led 1 on'); break;
             case 'led1off': console.log('Led 1 off'); break;
+            
+            case 'radioon':
+                console.log('Radio on');
+                exe('mpc play');
+                break;
+            
+            case 'radiooff':
+                console.log('Radio off');
+                exe('mpc stop');
+                break;
         }
     });
 });
 
-socket.on('disconnect', ()=>
+socket.on('disconnect', () =>
 {
     console.log('Disconnected from server');
 });

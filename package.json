@@ -10,7 +10,7 @@
   "scripts": {
     "start": "node server.js",
     "runserver": "node server.js",
-    "runmachine": "node machine.js"
+    "runmachine": "node machine/machine.js"
   },
   "keywords": [
     "raspberry",
