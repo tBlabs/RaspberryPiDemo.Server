@@ -1,3 +1,8 @@
+# Presentation
+
+https://docs.google.com/presentation/d/1dBnE9MilH8M12qnIudxnd_DpiWSWScF8r-O8LmG1M9E/pub?start=false&loop=false&delayms=60000&slide=id.g24c65dd9b8_0_5
+
+
 # RaspberryPiDemo.Server
 Server and Client (Human) side of Raspberry-Pi-Demo project for WarsawJS-36
 
